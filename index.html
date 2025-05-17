@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KODI AUTO - Serwis samochodowy</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
@@ -36,7 +35,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-bottom: 50px;
+            padding: 20px;
             text-align: center;
             color: #C6C6FF;
             opacity: 0;
@@ -47,14 +46,16 @@
         }
         .overlay h1 {
             margin-bottom: 20px;
-            font-size: 36px;
+            font-size: clamp(24px, 8vw, 36px);
             text-shadow: 0px 0px 8px rgba(198, 198, 255, 0.7);
+            line-height: 1.4;
         }
         .arrow {
-            font-size: 24px;
+            font-size: clamp(20px, 6vw, 24px);
             cursor: pointer;
             animation: bounce 1.5s infinite;
             text-shadow: 0px 0px 8px rgba(198, 198, 255, 0.7);
+            margin-top: 20px;
         }
         @keyframes bounce {
             0%, 100% {
@@ -65,17 +66,25 @@
             }
         }
         .contact-section {
-            height: 100vh;
+            min-height: 100vh;
             background-color: #141414;
             color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
+            padding: 20px;
+        }
+        .contact-content {
+            max-width: 600px;
+            width: 100%;
         }
         .contact-section a {
             color: #FFDD44;
             text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            font-size: clamp(14px, 4vw, 24px);
+            line-height: 1.6;
         }
         .contact-section a:hover {
             text-decoration: underline;
@@ -83,13 +92,43 @@
         .contact-section h1 {
             color: #C6C6FF;
             text-shadow: 0px 0px 8px rgba(198, 198, 255, 0.7);
+            font-size: clamp(20px, 6vw, 32px);
+            margin-bottom: 30px;
+        }
+        .contact-section p {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .overlay {
+                padding: 15px;
+            }
+            .contact-section {
+                padding: 15px;
+            }
+            .contact-section a {
+                word-break: break-word;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .overlay h1 {
+                margin-bottom: 15px;
+            }
+            .arrow {
+                margin-top: 15px;
+            }
+            .contact-section {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="video-container">
-    <video id="repairVideo" autoplay muted>
+    <video id="repairVideo" autoplay muted playsinline>
         <source src="video.webm" type="video/webm">
         Your browser does not support the video tag.
     </video>
@@ -101,7 +140,7 @@
 </div>
 
 <div class="contact-section" id="contactSection">
-    <div>
+    <div class="contact-content">
         <h1>Contact Us</h1>
         <p><a href="https://maps.app.goo.gl/bZbRm9s2NHZUZWuz5" target="_blank">
             Baletowa 30B, 02-867 Warszawa
